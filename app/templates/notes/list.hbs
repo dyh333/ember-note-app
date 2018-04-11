@@ -1,0 +1,70 @@
+<div style="width: 60%; padding: 20px; margin:0px auto;">
+    <div style="display: flex; margin-bottom: 30px;">
+        {{#bs-button type="success" onClick=(action "addNote")}}
+          新增
+        {{/bs-button}}
+        {{#bs-button type="warning" onClick=(action "updateNote")}}
+          修改
+        {{/bs-button}}
+        {{#bs-button type="danger" onClick=(action "deleteNote")}}
+          删除
+        {{/bs-button}}
+        {{!-- <button {{action "addNote"}}>新增</button>
+        <button {{action "updateNote"}}>修改</button>
+        <button {{action "deleteNote"}}>删除</button> --}}
+    </div>
+    <table border="1">
+        {{#each model as |note|}}
+          <tr>
+            <td>
+              <input type="radio" name="note-radio" onchange={{action "selectNote" note}}>
+            </td>
+            <td {{action "showNote" note}}>{{note.thing}}</td>
+            <td {{action "showNote" note}}>{{note.localdate}}</td>
+          </tr>
+        {{/each}}
+    </table>
+</div>
+
+{{#if isShowingAddModal}}
+  {{#modal-dialog
+      onClose=(action (mut isShowingAddModal) false)
+      translucentOverlay=true
+      overlayPosition='sibling'
+  }}
+    <div style="border-bottom: solid 1px #000">
+        {{#if (eq modalStatus "new") }}
+          <span>新增</span>
+        {{else if (eq modalStatus "update") }}
+          <span>修改</span>
+        {{else}}
+          <span>查看</span>
+        {{/if}}
+    </div>
+    <div style="margin-top: 5px;">
+      {{ textarea value=textValue }}
+    </div>
+    {{#if (if-cond (eq modalStatus "new") (eq modalStatus "update")) }}
+    <div>
+      <button onclick={{action (mut isShowingAddModal) false}}>取消</button>
+      <button {{action "submit"}}>确定</button>
+    </div>
+    {{/if}}
+  {{/modal-dialog}}
+{{/if}}
+
+{{!-- {{#note-modal}}{{/note-modal}} --}}
+
+{{!-- {{#bs-modal open=modalAdd onSubmit=(action "submitAdd") onHidden=(action (mut modalAdd) false) as |modal|}}
+  {{#modal.header}}
+    <h5 class="modal-title">
+      新增
+    </h5>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{ textarea value=textValue }}
+  {{/modal.body}}
+  {{#modal.footer}}
+    {{#bs-button type="success" onClick=(action modal.submit)}}确定{{/bs-button}}
+  {{/modal.footer}}
+{{/bs-modal}} --}}

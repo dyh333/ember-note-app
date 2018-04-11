@@ -1,0 +1,24 @@
+<div class="header">
+    {{#link-to "notes.list"}}
+        <span>我的笔记本</span>
+    {{/link-to}}
+    <div>
+        {{#bs-dropdown tagName="span" as |dd|}}
+            {{#dd.toggle}}{{ model.name }}<span class="caret"></span>{{/dd.toggle}}
+            {{#dd.menu as |menu|}}
+                {{#menu.item}}
+                    {{#menu.link-to "notes.info"}}
+                    个人信息
+                    {{/menu.link-to}}
+                {{/menu.item}}
+                {{#menu.item}}
+                    {{#menu.link-to "login"}}
+                    退出
+                    {{/menu.link-to}}
+                {{/menu.item}}
+            {{/dd.menu}}
+        {{/bs-dropdown}}
+    </div>
+</div>
+
+{{outlet}}

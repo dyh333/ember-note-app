@@ -1,0 +1,17 @@
+<div class='container'>
+    <h1 style="text-align:center">个人记事本</h1>
+    <div class="login">
+        <div class="form-row">
+            <span>用户名：</span>
+            {{input type="text" value=username}}
+        </div>
+        <div class="form-row">
+            <span>密码：</span>
+            {{input type="password" value=password}}
+        </div>
+        <div class="form-row horizontal-center">
+            <button {{action "login"}}>登录</button>
+        </div>
+    </div>
+</div>
+{{outlet}}

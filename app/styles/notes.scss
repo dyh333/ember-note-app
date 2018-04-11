@@ -1,0 +1,16 @@
+.dropdown-menu {
+  min-width: 0px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+  border-bottom: solid 1px #000;
+
+  .row {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+  }
+}

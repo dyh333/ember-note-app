@@ -1,0 +1,16 @@
+.login {
+  border: solid 1px #000;
+  width: 30%;
+  padding: 20px;
+  margin: 0px auto;
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+  }
+
+  .horizontal-center {
+    justify-content: center;
+  }
+}

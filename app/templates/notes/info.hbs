@@ -1,0 +1,17 @@
+<div style="margin: 30px;">
+    <div style="display: flex; justify-content: start; margin: 5px 0;">
+        <span style="width: 100px;">用户名：</span>
+        <span>{{ model.name }}</span>
+    </div>
+    <div style="display: flex; justify-content: start; margin: 5px 0;">
+        <span style="width: 100px;">密码：</span>
+        <span {{action "updatePassword"}}>***</span>
+    </div>
+    {{#if isUpdate}}
+    <div>
+        {{!-- <input type="password" style="margin-left: 100px;"> --}}
+        {{input type="password" value=newPassword  style="margin-left: 100px;"}}
+        <button {{action "confirmUpdate"}}>修改密码</button>
+    </div>
+    {{/if}}
+</div>
